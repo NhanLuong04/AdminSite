@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ConverseShop.Models.Color>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách màu sắc</h2>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <select name="colorId" class="form-control" style="width:200px; display:inline-block;">
+                <option>Tất cả loại</option>
+                @foreach (var item in new ConverseShop.Models.mapColor().Index())
+                {
+                    <option value="@item.ColorID" @Html.Raw(item.ColorID == (int?)ViewBag.colorId ? "Selected" : "")>@item.ColorName</option>
+                }
+            </select>
+            <input name="color" value="@ViewBag.color" class="form-control" style="width:300px; display:inline-block;" />
+            <button class="btn btn-xs btn-success">Tìm kiếm</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ColorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RGB)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ColorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RGB)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ColorID }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ColorID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>
+

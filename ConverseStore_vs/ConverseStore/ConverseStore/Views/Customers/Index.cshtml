@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ConverseStore.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách khách hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>SĐT</th>
+        <th>
+            Mật khẩu
+        </th>
+        <th>
+            Họ
+        </th>
+        <th>
+            Tên
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CusPhone }) 
+            @Html.ActionLink("Details", "Details", new { id=item.CusPhone }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.CusPhone })
+        </td>
+    </tr>
+}
+
+</table>

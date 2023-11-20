@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+
+}
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+<link href="~/Content/style.css" rel="stylesheet" />
+<script src="~/Content/js.js"></script>
+<main id="main1">
+    <div class="Account__title">
+        <h1>Thanh Toán </h1>
+        <div class="Account__title-mini">
+            <i class="fa-solid fa-house"></i> <span>Home / Thanh Toán </span>
+        </div>
+    </div>
+    <div class="voucher">
+        <p>Bạn có ưu đãi ?  <a href="#">Ấn vào đây để nhập mã</a></p>
+    </div>
+    <div class="pay">
+        <div class="infor">
+            <div class="checkout">
+                <h3>Thông tin thanh toán </h3>
+                <div class="name">
+                    <div class="name1">
+                        <label for="username">Tên  <span class="red">*</span></label><br>
+                        <input type="email" id="username" name="username"><br>
+                    </div>
+                    <div class="name2">
+                        <label for="username">Họ <span class="red">*</span></label><br>
+                        <input type="email" id="username" name="username"><br>
+                    </div>
+                </div>
+                <div class="diachi">
+                    <label for="diachi">địa chỉ <span class="red">*</span></label><br>
+                    <input id="diachi"><br>
+                    <input id="diachi"><br>
+                </div>
+                <div class="city">
+                    <label for="thanhpho">Tỉnh/Thành phố  <span class="red">*</span></label><br>
+                    <input id="thanhpho"><br>
+                </div>
+                <div class="phone">
+                    <label for="username">Số Điện Thoại  <span class="red">*</span></label><br>
+                    <input type="email" id="username" name="username"><br>
+                </div>
+                <div class="email">
+                    <label for="username">Email  <span class="red">*</span></label><br>
+                    <input type="email" id="username" name="username"><br>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="payment">
+            <div class="info">
+                <h3>Đơn Hàng Của Bạn</h3>
+                <div class="total">
+                    <div class="total1">
+                        <p class="left">Sản Phẩm</p>
+                        <p class="right">Tạm Tính </p>
+                    </div>
+                    <div class="total2">
+                        <p class="left">Run star HIKE low black white - 37  × 1</p>
+                        <p class="right">1.100.000₫</p>
+                    </div>
+                    <div class="total3">
+                        <p class="left">Tạm Tính</p>
+                        <p class="right">1.100.000₫</p>
+                    </div>
+                    <div class="total4">
+                        <p class="left">Tổng </p>
+                        <span class="right">1.100.000₫</span>
+                    </div>
+                </div>
+                <div class="thanhtoan">
+                    <label><input type="radio" name="payment" id="tienmat" onchange="cachthanhtoan('tienmat')">Trả tiền mặt khi nhận hàng</label>
+                    <div class="tienmat1" id="thanhtoantienmat">
+                        <p>
+                            Trả tiền mặt khi nhận hàng
+                        </p>
+                    </div>
+                    <div class="chuyenkhoan">
+                        <label> <input type="radio" name="payment" id="chuyenkhoan" onchange="cachthanhtoan('chuyenkhoan')">Chuyển khoản ngân hàng</label>
+                        <div class="tienmat" id="thanhtoanchuyenkhoan">
+                            <p>
+                                CHU HUYEN THUY - MB Bank (Ngân Hàng Quân Đội)<br>
+                                8585999991985<br>
+                                Nội dung: Ghi mã đơn hàng + SĐT
+                            </p>
+                        </div>
+                    </div>
+                    <div class="dathang">
+                        <p>
+                            Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng,
+                            tăng trải nghiệm sử dụng website, và cho các mục đích cụ thể khác đã được mô tả trong <strong>chính sách riêng tư</strong>.
+                        </p>
+                        <button>Đặt Hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inforadd">
+        <h3> Thông Tin Bổ Sung </h3>
+        <label for="inforplus">Ghi chú đơn hàng (tùy chọn)</label><br>
+        <textarea name="inforplus" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."></textarea>
+
+    </div>
+</main>

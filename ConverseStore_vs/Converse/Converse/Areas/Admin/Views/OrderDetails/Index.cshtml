@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Converse.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Phương thức thanh toán
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProDetail.Product.ProName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProDetail.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.TotalValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.payment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderDetailID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderDetailID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderDetailID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Converse.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách loại hàng</h2>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <select name="idCate" class="form-control" style="width:200px; display:inline-block;">
+                <option>Tất cả loại</option>
+                @foreach (var item in new Converse.Models.mapCategory().Index())
+                {
+                    <option value="@item.CatID" @Html.Raw(item.CatID == (int?)ViewBag.idCate ? "Selected" : "")>@item.NameCate</option>
+                }
+            </select>
+            <input name="category" value="@ViewBag.category" class="form-control" style="width:300px; display:inline-block;" />
+            <button class="btn btn-xs btn-success">Tìm kiếm</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    Tên loại
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameCate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CatID })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CatID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>

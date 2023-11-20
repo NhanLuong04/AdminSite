@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ConverseStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ConverseStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="ConverseStoreModel.Category" />
+    <EntitySet Name="Colors" EntityType="ConverseStoreModel.Color" />
+    <EntitySet Name="Customers" EntityType="ConverseStoreModel.Customer" />
+    <EntitySet Name="Orders" EntityType="ConverseStoreModel.Order" />
+    <EntitySet Name="OrderDetails" EntityType="ConverseStoreModel.OrderDetail" />
+    <EntitySet Name="ProDetails" EntityType="ConverseStoreModel.ProDetail" />
+    <EntitySet Name="Products" EntityType="ConverseStoreModel.Product" />
+    <EntitySet Name="Sizes" EntityType="ConverseStoreModel.Size" />
+    <EntitySet Name="Suppliers" EntityType="ConverseStoreModel.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="ConverseStoreModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="ConverseStoreModel.User" />
+    <AssociationSet Name="FK_Pro_Category" Association="ConverseStoreModel.FK_Pro_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__Color__46E78A0C" Association="ConverseStoreModel.FK__ProDetail__Color__46E78A0C">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__CusPhone__4E88ABD4" Association="ConverseStoreModel.FK__Order__CusPhone__4E88ABD4">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__52593CB8" Association="ConverseStoreModel.FK__OrderDeta__Order__52593CB8">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__ProDe__5165187F" Association="ConverseStoreModel.FK__OrderDeta__ProDe__5165187F">
+      <End Role="ProDetail" EntitySet="ProDetails" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__ProID__44FF419A" Association="ConverseStoreModel.FK__ProDetail__ProID__44FF419A">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__SupID__45F365D3" Association="ConverseStoreModel.FK__ProDetail__SupID__45F365D3">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProDetail_Size" Association="ConverseStoreModel.FK_ProDetail_Size">
+      <End Role="Size" EntitySet="Sizes" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CatID" />
+    </Key>
+    <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="ConverseStoreModel.FK_Pro_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColorName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RGB" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ProDetails" Relationship="ConverseStoreModel.FK__ProDetail__Color__46E78A0C" FromRole="Color" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CusPhone" />
+    </Key>
+    <Property Name="CusPhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CusPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CusSurname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CusEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="ConverseStoreModel.FK__Order__CusPhone__4E88ABD4" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="CusPhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="AddressDeliverry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="payment" Type="Int32" />
+    <Property Name="TotalValue" Type="Double" />
+    <NavigationProperty Name="Customer" Relationship="ConverseStoreModel.FK__Order__CusPhone__4E88ABD4" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="ConverseStoreModel.FK__OrderDeta__Order__52593CB8" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProDeID" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="ConverseStoreModel.FK__OrderDeta__Order__52593CB8" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="ProDetail" Relationship="ConverseStoreModel.FK__OrderDeta__ProDe__5165187F" FromRole="OrderDetail" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="ProDetail">
+    <Key>
+      <PropertyRef Name="ProDeID" />
+    </Key>
+    <Property Name="ProDeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProID" Type="Int32" Nullable="false" />
+    <Property Name="SupID" Type="Int32" Nullable="false" />
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="SIZE" Type="Int32" Nullable="false" />
+    <Property Name="SHAPE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KEYWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Color" Relationship="ConverseStoreModel.FK__ProDetail__Color__46E78A0C" FromRole="ProDetail" ToRole="Color" />
+    <NavigationProperty Name="OrderDetails" Relationship="ConverseStoreModel.FK__OrderDeta__ProDe__5165187F" FromRole="ProDetail" ToRole="OrderDetail" />
+    <NavigationProperty Name="Product" Relationship="ConverseStoreModel.FK__ProDetail__ProID__44FF419A" FromRole="ProDetail" ToRole="Product" />
+    <NavigationProperty Name="Supplier" Relationship="ConverseStoreModel.FK__ProDetail__SupID__45F365D3" FromRole="ProDetail" ToRole="Supplier" />
+    <NavigationProperty Name="Size1" Relationship="ConverseStoreModel.FK_ProDetail_Size" FromRole="ProDetail" ToRole="Size" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProID" />
+    </Key>
+    <Property Name="ProID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatID" Type="Int32" Nullable="false" />
+    <Property Name="ProName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NameDecription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProImageHover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoldQuantity" Type="Int32" />
+    <Property Name="RemainQuantity" Type="Int32" />
+    <Property Name="DISCOUNT" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Category" Relationship="ConverseStoreModel.FK_Pro_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="ProDetails" Relationship="ConverseStoreModel.FK__ProDetail__ProID__44FF419A" FromRole="Product" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="SizeID" />
+    </Key>
+    <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SizeNum" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProDetails" Relationship="ConverseStoreModel.FK_ProDetail_Size" FromRole="Size" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupID" />
+    </Key>
+    <Property Name="SupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProDetails" Relationship="ConverseStoreModel.FK__ProDetail__SupID__45F365D3" FromRole="Supplier" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Pro_Category">
+    <End Type="ConverseStoreModel.Category" Role="Category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ConverseStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__Color__46E78A0C">
+    <End Type="ConverseStoreModel.Color" Role="Color" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ConverseStoreModel.ProDetail" Role="ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__CusPhone__4E88ABD4">
+    <End Type="ConverseStoreModel.Customer" Role="Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ConverseStoreModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CusPhone" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CusPhone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__52593CB8">
+    <End Type="ConverseStoreModel.Order" Role="Order" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ConverseStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__ProDe__5165187F">
+    <End Type="ConverseStoreModel.ProDetail" Role="ProDetail" Multiplicity="0..1" />
+    <End Type="ConverseStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProDetail">
+        <PropertyRef Name="ProDeID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProDeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__ProID__44FF419A">
+    <End Type="ConverseStoreModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ConverseStoreModel.ProDetail" Role="ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="ProID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__SupID__45F365D3">
+    <End Type="ConverseStoreModel.Supplier" Role="Supplier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ConverseStoreModel.ProDetail" Role="ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="SupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProDetail_Size">
+    <End Type="ConverseStoreModel.Size" Role="Size" Multiplicity="1" />
+    <End Type="ConverseStoreModel.ProDetail" Role="ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="SIZE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

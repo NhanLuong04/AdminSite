@@ -1,0 +1,120 @@
+﻿
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<script src="~/Content/js.js"></script>
+<link href="~/Content/style.css" rel="stylesheet" />
+<style>
+    table {
+        width: 100%;
+        height: 100px;
+    }
+
+    thead {
+        height: 56px;
+    }
+
+    .container tbody {
+        height: 111px;
+    }
+
+    .displayPod th {
+        padding: 15px 10px;
+        border-bottom: 1px solid gray;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .product__remove {
+        width: 2.8%;
+    }
+
+    .product__thumbnail {
+        width: 6.9%;
+    }
+
+    .product__Item {
+        width: 30%;
+    }
+
+    .product__count {
+        width: 8.3%;
+    }
+
+    .product__tempPrice {
+        width: 19%;
+    }
+</style>
+<main class="mainCart" onload="CartloadPage()">
+    <section id="breadcrumb">
+        <div class="breadcrumb__container">
+            <div class="breadcrumb__title">
+                GIỎ HÀNG
+            </div>
+            <div class="breadcrumb__link">
+                <i class="fi fi-rs-house-chimney"></i>
+                <a href="/home.html" class="breadcrumb__link-home">
+                    Home
+                </a>
+                <span>/</span>
+                <span class="breadcrumb__cart">
+                    Giỏ hàng
+                </span>
+            </div>
+        </div>
+    </section>
+    <table class="container">
+        <thead>
+            <tr class="displayProd">
+                <th class="product__remove"></th>
+                <th class="product__thumbnail"></th>
+                <th class="product__Item">SẢN PHẨM</th>
+                <th class="product__price">GIÁ</th>
+                <th class="product__count">SỐ LƯỢNG</th>
+                <th class="product__tempPrice">TẠM TÍNH</th>
+            </tr>
+        </thead>
+        <tbody id='products-cart'>
+        </tbody>
+    </table>
+
+    <div class="updateCart container">
+        <div class="discountCart">
+            <input type="text" placeholder="Mã ưu đãi">
+            <button>Áp Dụng</button>
+        </div>
+
+        <div class="updateCart__update">
+            <a href="">CẬP NHẬT GIỎ HÀNG</a>
+        </div>
+    </div>
+
+    <div class="subtotalCart container">
+        <div class="totalCart">
+            <h2>CỘNG GIỎ HÀNG</h2>
+            <div class="sumCart">
+                <div class="tempCart">
+                    <span>Tạm tính</span>
+                    <span>
+                        <span id="tempValue"></span>
+                        <span>₫</span>
+                    </span>
+                </div>
+
+                <div class="subtotal__value">
+                    <span>TỔNG</span>
+                    <span>
+                        <span id="subValue"></span>
+                        <span>₫</span>
+                    </span>
+                </div>
+            </div>
+            <div class="paymentCart">
+                <a href="@Url.Action("Index", "Payment")">TIẾN HÀNH THANH TOÁN</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+     

@@ -1,0 +1,148 @@
+﻿@model ConverseStore.Models.ProDetail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h1>QUẢN LÝ HÀNG HÓA</h1>
+
+@using (Html.BeginForm("Create", "ProDetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên hàng hóa</div>
+            <div class="col-md-10">
+                @Html.DropDownList("ProID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên nhà cung cấp</div>
+            <div class="col-md-10">
+                @Html.DropDownList("SupID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SupID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Màu sắc</div>
+            <div class="col-md-10">
+                @Html.DropDownList("ColorID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ColorID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row row-no-gutters">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="control-label col-md-2">Giá</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="control-label col-md-2">Số lượng</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Kích cỡ</div>
+            <div class="col-md-10">
+                @Html.DropDownList("SIZE", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SIZE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Dáng giày</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SHAPE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SHAPE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Từ khóa</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KEYWORD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KEYWORD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Hình 1</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UploadImage1, htmlAttributes: new { @type = "file" })
+                @Html.ValidationMessageFor(model => model.UploadImage1, "", new { @class = "text-danger" })
+                <div style="color:red">
+                    @ViewBag.error
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Hình 2</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UploadImage2, htmlAttributes: new { @type = "file" })
+                @Html.ValidationMessageFor(model => model.UploadImage2, "", new { @class = "text-danger" })
+                <div style="color:red">
+                    @ViewBag.error
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Hình 3</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UploadImage3, htmlAttributes: new { @type = "file" })
+                @Html.ValidationMessageFor(model => model.UploadImage3, "", new { @class = "text-danger" })
+                <div style="color:red">
+                    @ViewBag.error
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Hình 4</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UploadImage4, htmlAttributes: new { @type = "file" })
+                @Html.ValidationMessageFor(model => model.UploadImage4, "", new { @class = "text-danger" })
+                <div style="color:red">
+                    @ViewBag.error
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Hình 5</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UploadImage5, htmlAttributes: new { @type = "file" })
+                @Html.ValidationMessageFor(model => model.UploadImage5, "", new { @class = "text-danger" })
+                <div style="color:red">
+                    @ViewBag.error
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm mới" class="btn btn-success" />
+                @Html.ActionLink("Quay lại", "Index",null, new {@class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
+

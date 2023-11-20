@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ConverseStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CatID" />
+    </Key>
+    <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Pro_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RGB" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProDetails" Relationship="Self.FK__ProDetail__Color__46E78A0C" FromRole="Color" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CusPhone" />
+    </Key>
+    <Property Name="CusPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CusPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CusSurname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CusEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__CusPhone__4E88ABD4" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="CusPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressDeliverry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalValue" Type="Double" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Order__CusPhone__4E88ABD4" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__52593CB8" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProDeID" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="UnitPrice" Type="Double" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__52593CB8" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="ProDetail" Relationship="Self.FK__OrderDeta__ProDe__5165187F" FromRole="OrderDetail" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="ProDetail">
+    <Key>
+      <PropertyRef Name="ProDeID" />
+    </Key>
+    <Property Name="ProDeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProID" Type="Int32" Nullable="false" />
+    <Property Name="SupID" Type="Int32" Nullable="false" />
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="SIZE" Type="Int32" Nullable="false" />
+    <Property Name="SHAPE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KEYWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Color" Relationship="Self.FK__ProDetail__Color__46E78A0C" FromRole="ProDetail" ToRole="Color" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__ProDe__5165187F" FromRole="ProDetail" ToRole="OrderDetail" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProDetail__ProID__44FF419A" FromRole="ProDetail" ToRole="Product" />
+    <NavigationProperty Name="Size1" Relationship="Self.FK__ProDetail__SIZE__47DBAE45" FromRole="ProDetail" ToRole="Size" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK__ProDetail__SupID__45F365D3" FromRole="ProDetail" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProID" />
+    </Key>
+    <Property Name="ProID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatID" Type="Int32" Nullable="false" />
+    <Property Name="ProName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NameDecription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProImageHover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoldQuantity" Type="Int32" />
+    <Property Name="RemainQuantity" Type="Int32" />
+    <Property Name="DISCOUNT" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Pro_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="ProDetails" Relationship="Self.FK__ProDetail__ProID__44FF419A" FromRole="Product" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="SizeID" />
+    </Key>
+    <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SizeNum" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProDetails" Relationship="Self.FK__ProDetail__SIZE__47DBAE45" FromRole="Size" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupID" />
+    </Key>
+    <Property Name="SupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProDetails" Relationship="Self.FK__ProDetail__SupID__45F365D3" FromRole="Supplier" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Pro_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__Color__46E78A0C">
+    <End Role="Color" Type="Self.Color" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__CusPhone__4E88ABD4">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CusPhone" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CusPhone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__52593CB8">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__ProDe__5165187F">
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProDetail">
+        <PropertyRef Name="ProDeID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProDeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__ProID__44FF419A">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="ProID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__SIZE__47DBAE45">
+    <End Role="Size" Type="Self.Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="SIZE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__SupID__45F365D3">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="SupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ConverseStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Colors" EntityType="Self.Color" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="ProDetails" EntityType="Self.ProDetail" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Sizes" EntityType="Self.Size" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__Color__46E78A0C" Association="Self.FK__ProDetail__Color__46E78A0C">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__CusPhone__4E88ABD4" Association="Self.FK__Order__CusPhone__4E88ABD4">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__52593CB8" Association="Self.FK__OrderDeta__Order__52593CB8">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__ProDe__5165187F" Association="Self.FK__OrderDeta__ProDe__5165187F">
+      <End Role="ProDetail" EntitySet="ProDetails" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__ProID__44FF419A" Association="Self.FK__ProDetail__ProID__44FF419A">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__SIZE__47DBAE45" Association="Self.FK__ProDetail__SIZE__47DBAE45">
+      <End Role="Size" EntitySet="Sizes" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__SupID__45F365D3" Association="Self.FK__ProDetail__SupID__45F365D3">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ConverseStoreModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ConverseStoreModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spDanhSachSanPham" ReturnType="Collection(ConverseStoreModel.spDanhSachSanPham_Result)">
+      <Parameter Name="ProName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="sysdiagrams" EntityType="ConverseStoreModel.sysdiagram" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDanhSachSanPham_Result">
+    <Property Type="String" Name="NameDecription" Nullable="true" />
+    <Property Type="String" Name="ProImage" Nullable="true" />
+    <Property Type="String" Name="ProImageHover" Nullable="true" />
+    <Property Type="Int32" Name="SoldQuantity" Nullable="true" />
+    <Property Type="Int32" Name="RemainQuantity" Nullable="true" />
+    <Property Type="Int32" Name="DISCOUNT" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ProName" Nullable="true" />
+    <Property Type="Int32" Name="ProID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

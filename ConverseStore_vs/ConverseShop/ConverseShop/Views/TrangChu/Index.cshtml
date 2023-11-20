@@ -1,0 +1,896 @@
+﻿
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<link href="~/Content/style.css" rel="stylesheet" />
+    
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+
+<body onload="loadPage()">
+    <main id="main">
+        <!-- ====== ALBUM ======= -->
+        <section class="album">
+            <h3 class="main__title sectionTitle">BỘ SƯU TẬP</h3>
+            <!-- == SLIDER == -->
+            <div class="album__slider">
+                <div class="slider img1 fade">
+                    <a href="#">
+                        <img src="http://127.0.0.1:5501/assets/img/slider/slider1.jpg">
+                    </a>
+                </div>
+                <div class="slider img2 fade">
+                    <a href="#">
+                        <img src="http://127.0.0.1:5501/assets/img/slider/slider2.jpg">
+                    </a>
+                </div>
+                <div class="album__slider-promotion grid">
+                    <div class="album__promotion-sales">-70%</div>
+                    <div class="album__promotion-desc">
+                        SALES LÊN ĐẾN 70% CÁC MẪU VANS SIÊU HOT
+                    </div>
+                </div>
+                <a href="#" class="prev__slider" onclick="plusSlides(-1)">
+                    <i class="fi fi-rs-angle-left"></i>
+                </a>
+                <a href="#" class="next__slider" onclick="plusSlides(1)">
+                    <i class="fi fi-rs-angle-right"></i>
+                </a>
+                <ul class="slider__number flex">
+                    <li> <a href="#" class="dot" onclick="currentSlide(1)">1</a></li>
+                    <li> <a href="#" class="dot" onclick="currentSlide(2)">2</a></li>
+                </ul>
+            </div>
+
+            <div class="album__banner-products sectionContent grid">
+                <div class="banner__product">
+                    <div class="banner__img-cover">
+                        <div class="banner-img">
+                            <img src="http://127.0.0.1:5501/assets/img/promotion/pro_1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="banner__cover">
+                        <div class="banner__inner">
+                            <p class="banner__product-category">CONVERSE</p>
+
+                            <h4 class="banner__product-name">
+                                CHUCK 70S
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="banner__product">
+                    <div class="banner__img-cover">
+                        <div class="banner-img">
+                            <img src="http://127.0.0.1:5501/assets/img/promotion/pro_2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="banner__cover">
+                        <div class="banner__inner">
+                            <p class="banner__product-category">CONVERSE</p>
+
+                            <h4 class="banner__product-name">
+                                CLASSIC
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="banner__product">
+                    <div class="banner__img-cover">
+                        <div class="banner-img">
+                            <img src="http://127.0.0.1:5501/assets/img/promotion/pro_3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="banner__cover">
+                        <div class="banner__inner">
+                            <p class="banner__product-category">CONVERSE</p>
+
+                            <h4 class="banner__product-name">
+                                HOT SALE
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="size-chart">
+                    <img src="http://127.0.0.1:5501/assets/img/promotion/pro_4.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- ==== NEW PRODUCT ====== -->
+        <section class="newProduct">
+            <h3 class="main__title sectionTitle">HÀNG MỚI VỀ</h3>
+
+            <div class="newProduct__products container grid">
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a  href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/hike_low.jpg" alt="" class="product-img default">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -61%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Giày</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Run star HIKE low black white</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">2.800.000₫</span>
+                            <span class="product__newPrice">1.100.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a  href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/chunk_renew.png" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -50%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Sale hot</span>
+                        </div>
+
+                        <a href="/detailProducts.html" class="product__content-title">
+                            <h3 class="name__product">Converse Renew Canvas</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">3.200.000₫</span>
+                            <span class="product__newPrice">1.600.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="/detailProducts.html" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/move_platform.png" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Sale hot</span>
+                        </div>
+
+                        <a href="/detailProducts.html" class="product__content-title">
+                            <h3 class="name__product">Converse Run Star Move</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">3.200.000₫</span>
+                            <span class="product__newPrice">1.900.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                       <a href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/run_star_hike_hover_2.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -63%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Giày</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Run star HIKE low black white</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">2.800.000₫</span>
+                            <span class="product__newPrice">1.100.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/hike_low_hover_1.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -63%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Sale hot</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Converse Run Star Hike</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">3.200.000₫</span>
+                            <span class="product__newPrice">1.200.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="/detailProducts.html" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_hover_3.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Vans</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Vans Slip on checker</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">1.600.000₫</span>
+                            <span class="product__newPrice">950.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="newProduct__products container grid">
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a  href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_hover_4.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Giày</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Vans Old skool camel</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">2.800.000₫</span>
+                            <span class="product__newPrice">950.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a  href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_hover_5.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Vans</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Vans Authen DX BW</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">1.600.000₫</span>
+                            <span class="product__newPrice">950.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="@Url.Action("Index", "dePro")" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_hover_6.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Vans</span>
+                        </div>
+
+                        <a  href="@Url.Action("Index", "dePro")" class="product__content-title">
+                            <h3 class="name__product">Vans Authen DX Cream</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">1.600.000₫</span>
+                            <span class="product__newPrice">950.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="/detailProducts.html" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_hover_7.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Vans</span>
+                        </div>
+
+                        <a href="/detailProducts.html" class="product__content-title">
+                            <h3 class="name__product">Vans SK8-Hi BW</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <!-- <span class="product__oldPrice">2.800.000₫</span> -->
+                            <span class="product__newPrice">1.100.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="/detailProducts.html" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_default_8.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Vans</span>
+                        </div>
+
+                        <a href="/detailProducts.html" class="product__content-title">
+                            <h3 class="name__product">Vans Old Skool Black White</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">1.600.000₫</span>
+                            <span class="product__newPrice">950.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="/detailProducts.html" class="product__images">
+                            <img src="http://127.0.0.1:5501/assets/img/product/move_platform.png" alt="" class="product-img default">
+                            <img src="/assets/img/product/vans_hover_9.jpg" alt="" class="product-img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Cho vào yêu thích">
+                                <i class="fi fi-rs-heart"></i>
+                            </a>
+                            <a href="#" class="action__btn" aria-label="So sánh">
+                                <i class="fi fi-rs-code-compare"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge">
+                            -41%
+                        </div>
+
+                        <a href="#" class="product__cart-btn">
+                            <span>
+                                <i><i class="fi fi-rs-shopping-cart"></i></i>
+                            </span>
+                            <span>THÊM VÀO GIỎ </span>
+                        </a>
+                    </div>
+                    <div class="product__content">
+                        <div class="product__content-category">
+                            <span class="product__category">Converse</span>,
+                            <span class="product__promotion">Vans</span>
+                        </div>
+
+                        <a href="/detailProducts.html" class="product__content-title">
+                            <h3 class="name__product">Vans Old Skool Checker</h3>
+                        </a>
+
+                        <div class="product__content-price">
+                            <span class="product__oldPrice">1.600.000₫</span>
+                            <span class="product__newPrice">950.000</span>
+                            <sup>₫</sup>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== FEEDBACK ==== -->
+        <section class="feedback">
+            <div class="feedback__section container">
+                <h3 class="main__title sectionTitle suggest">FEEDBACK</h3>
+
+                <p class="feedback__desc">
+                    Đón đọc & cập nhật xu hướng cùng shop
+                </p>
+            </div>
+        </section>
+        <!-- ====== BLOG ======= -->
+        <section class="blog">
+            <div class="blog__section container">
+                <h3 class="main__title suggest">BLOG</h3>
+
+                <div class="blog__outer sectionTitle grid">
+                    <div class="blog__inner">
+                        <div class="blog__banner">
+                            <div class="blog__img-cover">
+                            </div>
+                            <a href="#" class="blog__banner-images">
+                                <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="" class="blog__img">
+                            </a>
+                            <div class="blog__banner-link">
+                                Lifestyle
+                            </div>
+
+                            <div class="blog__banner-date">
+                                <span>24</span>
+                                <span>THI</span>
+                            </div>
+                        </div>
+
+                        <div class="blog__content">
+                            <a href="#" class="blog__content-link">
+                                10 tips mang Converse Chuck 70s đẹp và chất hơn cập nhật 2020
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog__inner">
+                        <div class="blog__banner">
+                            <div class="blog__img-cover">
+                            </div>
+                            <a href="#" class="blog__banner-images">
+                                <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="" class="blog__img">
+                            </a>
+                            <div class="blog__banner-link">
+                                Thời trang
+                            </div>
+
+                            <div class="blog__banner-date">
+                                <span>24</span>
+                                <span>THI</span>
+                            </div>
+                        </div>
+
+                        <div class="blog__content">
+                            <a href="#" class="blog__content-link">
+                                Converse giới thiệu một bộ sưu tập táo bạo của “Twisted Classics”
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog__inner">
+                        <div class="blog__banner">
+                            <div class="blog__img-cover">
+                            </div>
+                            <a href="#" class="blog__banner-images">
+                                <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="" class="blog__img">
+                            </a>
+                            <div class="blog__banner-link">
+                                Thời trang
+                            </div>
+
+                            <div class="blog__banner-date">
+                                <span>23</span>
+                                <span>THI</span>
+                            </div>
+                        </div>
+
+                        <div class="blog__content">
+                            <a href="#" class="blog__content-link">
+                                Bí mật cách chọn size giày converse đơn giản – chuẩn 100%
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog__inner">
+                        <div class="blog__banner">
+                            <div class="blog__img-cover">
+                            </div>
+                            <a href="#" class="blog__banner-images">
+                                <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="" class="blog__img">
+                            </a>
+                            <div class="blog__banner-link">
+                                Du lịch
+                            </div>
+
+                            <div class="blog__banner-date">
+                                <span>23</span>
+                                <span>THI</span>
+                            </div>
+                        </div>
+
+                        <div class="blog__content">
+                            <a href="#" class="blog__content-link">
+                                All Star flagship, its evolution
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog__inner">
+                        <div class="blog__banner">
+                            <div class="blog__img-cover">
+                            </div>
+                            <a href="#" class="blog__banner-images">
+                                <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="" class="blog__img">
+                            </a>
+                            <div class="blog__banner-link">
+                                Lifestyle, Thời trang
+                            </div>
+
+                            <div class="blog__banner-date">
+                                <span>23</span>
+                                <span>THI</span>
+                            </div>
+                        </div>
+
+                        <div class="blog__content">
+                            <a href="#" class="blog__content-link">
+                                Vans ra mắt bộ sưu tập 66 Supply
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="blog__inner">
+                        <div class="blog__banner">
+                            <div class="blog__img-cover">
+                            </div>
+                            <a href="#" class="blog__banner-images">
+                                <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="" class="blog__img">
+                            </a>
+                            <div class="blog__banner-link">
+                                Du lịch, Lifestyle, Thời trang
+                            </div>
+
+                            <div class="blog__banner-date">
+                                <span>23</span>
+                                <span>THI</span>
+                            </div>
+                        </div>
+
+                        <div class="blog__content">
+                            <a href="#" class="blog__content-link">
+                                Miley Cyrus hợp tác với Converse cho bộ sưu tập giày thể thao Pride mới
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="warranty sectionTitle">
+            <div class="warranty__list flex container">
+                <div class="warranty__item">
+                    <div class="warranty__avt">
+                        <img src="http://127.0.0.1:5501/assets/img/blog/blog_1.jpg" alt="">
+                    </div>
+
+                    <div class="warranty__content">
+                        <div class="warranty__title">
+                            <span>CAM KẾT CHỈ BÁN</span>
+                            <span>GIÀY CONVERSE CHÍNH HÃNG</span>
+                        </div>
+
+                        <div class="warranty__benefit">
+                            bạn có thể thoải mái liên hệ cửa hàng check code thoải mái trước khi mua sản phẩm
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warranty__item">
+                    <div class="warranty__avt">
+                        <img src="/assets/img/warranty/logo_2.png" alt="">
+                    </div>
+
+                    <div class="warranty__content">
+                        <div class="warranty__title">
+                            <span>BẢO HÀNH GIÀY</span>
+                            <span>3 THÁNG</span>
+                        </div>
+
+                        <div class="warranty__benefit">
+                            <div>để bạn yên tâm sử dụng.</div>
+                            <div>
+                                Bạn đọc kỹ điều khoản
+                                <span>tại đây</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warranty__item">
+                    <div class="warranty__avt">
+                        <img src="/assets/img/warranty/logo_3.png" alt="">
+                    </div>
+
+                    <div class="warranty__content">
+                        <div class="warranty__title">
+                            <span>ĐỔI TRẢ TRONG VÒNG</span>
+                            <span>3 NGÀY</span>
+                        </div>
+
+                        <div class="warranty__benefit">
+                            <div>Đổi trả sản phẩm linh hoạt.Nhưng</div>
+                            <div>
+                                Bạn hãy đọc kỹ điều khoản
+                                <span>tại đây</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warranty__item">
+                    <div class="warranty__avt">
+                        <img src="/assets/img/warranty/logo_4.png" alt="">
+                    </div>
+
+                    <div class="warranty__content">
+                        <div class="warranty__title">
+                            <span>SHIP HÀNG TOÀN QUỐC</span>
+                            <span>QUA NHIỀU KÊNH</span>
+                        </div>
+
+                        <div class="warranty__benefit">
+                            <div>Linh hoạt cho bạn nhận hàng</div>
+                            <div>có thể thanh toán COD hoặc chuyển khoản</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    </body>
+<script src="~/Content/js.js"></script>

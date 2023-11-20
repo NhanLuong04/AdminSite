@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ConverseStoreModelStoreContainer" CdmEntityContainer="ConverseStoreEntities2">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="NameCate" ColumnName="NameCate" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="RGB" ColumnName="RGB" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CusEmail" ColumnName="CusEmail" />
+          <ScalarProperty Name="CusName" ColumnName="CusName" />
+          <ScalarProperty Name="CusSurname" ColumnName="CusSurname" />
+          <ScalarProperty Name="CusPassword" ColumnName="CusPassword" />
+          <ScalarProperty Name="CusPhone" ColumnName="CusPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+          <ScalarProperty Name="AddressDeliverry" ColumnName="AddressDeliverry" />
+          <ScalarProperty Name="CusPhone" ColumnName="CusPhone" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="ConverseStoreModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProDeID" ColumnName="ProDeID" />
+          <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProDetails">
+      <EntityTypeMapping TypeName="ConverseStoreModel.ProDetail">
+        <MappingFragment StoreEntitySet="ProDetail">
+          <ScalarProperty Name="Image5" ColumnName="Image5" />
+          <ScalarProperty Name="Image4" ColumnName="Image4" />
+          <ScalarProperty Name="Image3" ColumnName="Image3" />
+          <ScalarProperty Name="Image2" ColumnName="Image2" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="KEYWORD" ColumnName="KEYWORD" />
+          <ScalarProperty Name="SHAPE" ColumnName="SHAPE" />
+          <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="SupID" ColumnName="SupID" />
+          <ScalarProperty Name="ProID" ColumnName="ProID" />
+          <ScalarProperty Name="ProDeID" ColumnName="ProDeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="RemainQuantity" ColumnName="RemainQuantity" />
+          <ScalarProperty Name="SoldQuantity" ColumnName="SoldQuantity" />
+          <ScalarProperty Name="ProImageHover" ColumnName="ProImageHover" />
+          <ScalarProperty Name="ProImage" ColumnName="ProImage" />
+          <ScalarProperty Name="NameDecription" ColumnName="NameDecription" />
+          <ScalarProperty Name="ProName" ColumnName="ProName" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="ProID" ColumnName="ProID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sizes">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="SizeNum" ColumnName="SizeNum" />
+          <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="ConverseStoreModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="SupName" ColumnName="SupName" />
+          <ScalarProperty Name="SupID" ColumnName="SupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ConverseStoreModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ConverseStoreModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

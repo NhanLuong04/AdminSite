@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ConverseStore.Models.Product>
+
+@{
+    ViewBag.Title = "DanhSach";
+    int i = 0;
+}
+<style>
+    th {
+        white-space:nowrap;
+    }
+</style>
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách sản phẩm</h2>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <select name="idPro" class="form-control" style="width:200px; display:inline-block;">
+                <option>Tất cả loại</option>
+                @foreach(var item in new ConverseStore.Models.mapProduct().DanhSach())
+                {
+                    <option value="@item.ProID"  @Html.Raw(item.ProID == (int?)ViewBag.idPro ? "Selected" : "")>@item.ProName</option>
+                }
+            </select>
+            <input name="product" value="@ViewBag.product" class="form-control" style="width:300px; display:inline-block;"/>
+            <button class="btn btn-xs btn-success">Tìm kiếm</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <tr>
+                <th>STT</th>
+                <th>
+                    TÊN SẢN PHẨM
+                </th>
+                <th>
+                    HÌNH ẢNH CHÍNH
+                </th>
+                <th>
+                    HÌNH ẢNH PHỤ
+                </th>
+                <th>
+                    MÔ TẢ
+                </th>
+                <th>
+                    NGÀY TẠO
+                </th>
+                <th>
+                    LOẠI SẢN PHẨM
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProName)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.ProImage)" width="100" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.ProImageHover)" width="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameDecription)
+                    </td>
+                    <td>
+                        @string.Format("{0:dd-MM-yyyy HH:mm:ss}", item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.NameCate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.ProID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Xem chi tiết", "Details", "ProDetails", new { id = item.ProID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.ProID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create",null, new {@class="btn btn-primary"})
+</div>
+

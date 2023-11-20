@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ConverseShop.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách khách hàng</h2>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <input name="cusName" value="@ViewBag.cusName" class="form-control" style="width:300px; display:inline-block;" />
+            <button class="btn btn-xs btn-success">Tìm kiếm</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>
+                    Họ khách hàng
+                </th>
+                <th>
+                    SĐT
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusSurname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusEmail)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) 
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>
+
+
+

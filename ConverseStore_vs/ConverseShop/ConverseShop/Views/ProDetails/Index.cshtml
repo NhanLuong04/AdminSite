@@ -1,0 +1,123 @@
+﻿@model IEnumerable<ConverseShop.Models.ProDetail>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Chi tiết sản phẩm</h2>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    Tên hàng
+                </th>
+                <th>
+                    Nhà cung cấp
+                </th>
+                <th>
+                    Màu sắc
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Kích thước
+                </th>
+                <th>
+                    Hình dáng
+                </th>
+                <th>
+                    Từ khóa
+                </th>
+                <th>
+                    Giá
+                </th>
+                <th>
+                    Hình 1
+                </th>
+                <th>
+                    Hình 2
+                </th>
+                <th>
+                    Hình 3
+                </th>
+                <th>
+                    Hình 4
+                </th>
+                <th>
+                    Hình 5
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ColorID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SIZE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SHAPE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KEYWORD)
+                    </td>
+                    <td>
+                        @string.Format("{0:#,0}", item.Price)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image1)" width="100" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image2)" width="100" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image3)" width="100" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image4)" width="100" />
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image5)" width="100" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) 
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>
+
+

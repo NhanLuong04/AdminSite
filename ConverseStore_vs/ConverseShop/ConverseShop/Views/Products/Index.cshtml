@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ConverseShop.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách sản phẩm</h2>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <select name="idPro" class="form-control" style="width:200px; display:inline-block;">
+                <option>Tất cả loại</option>
+                @foreach (var item in new ConverseShop.Models.mapProduct().Index())
+                {
+                    <option value="@item.ProID" @Html.Raw(item.ProID == (int?)ViewBag.idPro ? "Selected" : "")>@item.ProName</option>
+                }
+            </select>
+            <input name="product" value="@ViewBag.product" class="form-control" style="width:300px; display:inline-block;" />
+            <button class="btn btn-xs btn-success">Tìm kiếm</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    Tên hàng
+                </th>
+                <th>
+                    Mô tả
+                </th>
+                <th>
+                    Ảnh chính
+                </th>
+                <th>
+                    Ảnh phụ
+                </th>
+                <th>
+                    Đã bán
+                </th>
+                <th>
+                    Còn lại
+                </th>
+                <th>
+                    Giảm giá
+                </th>
+                <th>
+                    Ngày tạo
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+        <tr>
+            <td>@i</td>
+            <td>
+                <a href="~/Products/Details?id=@item.ProID">@item.ProName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameDecription)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ProImage)" width="100" />
+            </td>
+            <td>
+                <img src="@Url.Content(item.ProImageHover)" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoldQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemainQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DISCOUNT)%
+            </td>
+            <td>
+                @string.Format("{0:dd-MM-yyyy HH:mm:ss}", item.CreatedDate)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ProID }, new { @class = "btn btn-primary" })
+                <a onclick="if (confirm('Bạn có chắc chắn xóa không?') == true) {location.href='/Products/Delete?id=@item.ProID' }">Xóa</a>
+            </td>
+        </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>

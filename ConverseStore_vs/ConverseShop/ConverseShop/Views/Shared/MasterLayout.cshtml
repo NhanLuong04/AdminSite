@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <script>
+    var cartUrl = '@Url.Action("Index", "Cart")';
+    var paymentUrl = '@Url.Action("Index", "Payment")';
+    </script>
+
+</head>
+<body onload="loadPage()">
+
+
+    @* Header  *@
+    <!--========= HEADER ========-->
+    <header id="header">
+        <nav class="nav container">
+            <a href="@Url.Action("Index","TrangChu")" class="nav__logo">
+                <img src="https://conversestore.vn/wp-content/uploads/2020/09/store-giay.png" alt="" class="nav__logo-img">
+            </a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="@Url.Action("Index","TrangChu")"></a></li>
+                    <li class="nav__item"><a href="/productsCategory.html">GIÀY</a></li>
+                    <li class="nav__item"><a href="/converseCategory.html">CONVERSE</a></li>
+                    <li class="nav__item"><a href="/vansCategory.html">VANS</a></li>
+                    <li class="nav__item"><a href="/productsCategory.html">HOT SALE</a></li>
+                    <li class="nav__item">
+                        <a href="#">BLOG</a>
+                        <i class="fi fi-rs-angle-small-down"></i>
+                        <ul class="blog__list">
+                            <li class="blog__item"><a href="#">Thời trang</a></li>
+                            <li class="blog__item"><a href="#">Lifestyle</a></li>
+                            <li class="blog__item"><a href="#">Du lịch</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav__menu-outer">
+                <div class="nav__menu-sidebar">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="@Url.Action("Index","TrangChu")">TRANG CHỦ</a></li>
+                        <li class="nav__item"><a href="@Url.Action("Index","Product")" >GIÀY</a></li>
+                        <li class="nav__item"><a href="@Url.Action("Index","Product")">CONVERSE</a></li>
+                        <li class="nav__item"><a href="@Url.Action("Index","Product")">VANS</a></li>
+                        <li class="nav__item"><a href="@Url.Action("Index","Product")">HOT SALE</a></li>
+                        <li class="nav__item-sidebar">
+                            <span class="item__sidebar">
+                                <a href="#">BLOG</a>
+                                <span>
+                                    <i class="fi fi-rs-angle-small-down"></i>
+                                    <i class="fi fi-rs-cross-small" style="display: none;"></i>
+                                </span>
+                            </span>
+                            <ul class="blog__list-sidebar">
+                                <li class="blog__item-sidebar"><a href="#">Thời trang</a></li>
+                                <li class="blog__item-sidebar"><a href="#">Lifestyle</a></li>
+                                <li class="blog__item-sidebar"><a href="#">Du lịch</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav__item"><a href="#">DANH SÁCH YÊU THÍCH</a></li>
+                        <li class="nav__item">
+                            <a class="login">
+                                <span class="nav__item-logIn">ĐĂNG NHẬP</span> /
+                                <span class="nav__item-SignIn">ĐĂNG KÍ</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="login-item">
+                <div class="show-login">
+                    <div class="login-header">
+                        <div class="cart__login-close">
+                            <div class="login__title">Đăng Nhập </div>
+                            <div class="close__login">
+                                <span>
+                                    CLOSE
+                                </span>
+                                <span>
+                                    <i class="fi fi-rs-minus-small"></i>
+                                    <i class="fi fi-rs-cross-small"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="login-body">
+                        <label for="username">Tên người dùng hoặc email <span>*</span></label><br>
+                        <input type="text" id="username" name="username"><br>
+                        <label for="pwd">Mật khẩu <span>*</span></label><br>
+                        <input type="password" id="pwd" name="pwd"><br><br>
+                        <button>Đăng Nhập</button>
+                        <div class="checktk">
+                            <div>
+                                <input type="checkbox">
+                                <label>Nhớ Tài Khoản </label><br>
+                            </div>
+
+                            <div>
+                                <i class="fa-solid fa-gear"></i>
+                                <a href="#">Quên Mật Khẩu ?</a><br>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="login-footer">
+                        <div class="login__footer-icon">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <div class="login__footer-account">
+                            <P>Chưa Có Tài Khoản?</P>
+                        </div>
+                        <a href="@Url.Action("Index","dangkidangnhap")">Tạo một tài khoản</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class=""></div>
+            <div class="header__user-actions">
+                <div class="header__action-search">
+                    <i class="fi fi-rs-search"></i>
+                </div>
+                <div class="header__action-heart">
+                    <a href="#">
+                        <i class="fi fi-rs-heart">
+                        </i>
+                    </a>
+                    <span class="count">0</span>
+                </div>
+                <div class="header__action-cart js-openCart">
+                    <a href="#">
+                        <i class="fi fi-rs-shopping-cart"></i>
+                    </a>
+                    <span class="cart__subtotal">
+                        <span class="cart__subtotal-count">0</span>
+                        <span class="cart__subtotal-divider">/</span>
+                        <span class="cart__subtotal-totalAmount">
+                            <span class="cart__subtotal-total" id="total">0</span>
+                            <sup>₫</sup>
+                        </span>
+                    </span>
+                </div>
+                <div class="header__action-burgerMenu">
+                    <i class="fi fi-rs-burger-menu"></i>
+                </div>
+            </div>
+        </nav>
+        <div class="modal__cart">
+            <div class="modal__cart-container">
+                <div class="cart__header">
+                    <div class="cart__header-title">
+                        GIỎ HÀNG
+                    </div>
+
+                    <div class="cart__header-close">
+                        <span>ĐÓNG</span>
+                        <span>
+                            <i class="fi fi-rs-minus-small"></i>
+                            <i class="fi fi-rs-cross-small"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="cart__body">
+                    <div class="cart__render"></div>
+                </div>
+                <div class="cartTail cart__body">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    @* footer  *@
+    <footer id="footer">
+        <div class="footer__top grid ">
+            <div class="footer__top-menu container">
+                <ul>
+                    <li><a href="#">MUA HÀNG</a></li>
+                    <li><a href="#">ĐỔI TRẢ</a></li>
+                    <li><a href="#">SHIP HÀNG</a></li>
+                    <li><a href="#">THANH TOÁN</a></li>
+                    <li><a href="#">SIZE GUIDE</a></li>
+                    <li><a href="#">CÁCH CHECK CODE</a></li>
+                </ul>
+                <div class="footer__top-sm">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="/assets/img/SM/fb.png" alt="">
+                                <span>FACEBOOK</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="/assets/img/SM/instagram.png" alt="">
+                                <span>INSTAGRAM</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="/assets/img/SM/shopee.jpg" alt="">
+                                <span>SHOPEE</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__top-product">
+                <ul>
+                    <li><a href="#">GIÀY</a></li>
+                    <li><a href="#">ÁO</a></li>
+                    <li><a href="#">SALE</a></li>
+                    <li><a href="#">NAM</a></li>
+                    <li><a href="#">NỮ</a></li>
+                    <li><a href="#">CONVERSE</a></li>
+                    <li><a href="#">VANS</a></li>
+                </ul>
+            </div>
+            <div class="footer__top-address container">
+                <div class="address__title">
+                    CONVERSE.STORE_
+                </div>
+                <div class="address__converse">
+                    <div>CỬA HÀNG:</div>
+                    <div>
+                        <span>
+                            Số 8. Nguyễn Hoàng Tôn,
+                        </span>
+                        <span>
+                            Xuân La, Tây Hồ, Hà Nội
+                        </span>
+                    </div>
+                    <span class="address__number">
+                        <a href="#">+84 866.866.368</a>
+                    </span>
+                </div>
+                <div class="address__blog">
+                    <a href="#">BLOG</a>
+                </div>
+            </div>
+            <div class="footer__top-form ">
+                <div class="form__title">
+                    NHẬN ƯU ĐÃI TỪ CỬA HÀNG
+                </div>
+
+                <div class="form__input">
+                    <input type="email" placeholder="NHẬP MAIL BẠN">
+                </div>
+
+                <div class="form__btn">
+                    <button>NHẬN NGAY</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bot">
+            Copyright 2023. Converse.Store_
+        </div>
+    </footer>
+    <script src="~/Content/js.js"></script>
+   
+</body>
+</html>

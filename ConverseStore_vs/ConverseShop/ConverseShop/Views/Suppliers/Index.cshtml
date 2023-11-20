@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ConverseShop.Models.Supplier>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách nhà cung cấp</h2>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <select name="idSup" class="form-control" style="width:200px; display:inline-block;">
+                <option>Tất cả loại</option>
+                @foreach (var item in new ConverseShop.Models.mapSupplier().Index())
+                {
+                    <option value="@item.SupID" @Html.Raw(item.SupID == (int?)ViewBag.idSup ? "Selected" : "")>@item.SupName</option>
+                }
+            </select>
+            <input name="supplier" value="@ViewBag.supplier" class="form-control" style="width: 300px; display: inline-block;" />
+            <button class="btn btn-xs btn-success">Tìm kiếm</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    Nhà cung cấp
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SupID })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SupID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>

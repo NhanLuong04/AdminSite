@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+<link href="~/Content/style.css" rel="stylesheet" />
+<script src="~/Content/js.js"></script>
+<script src="~/Content/account.js"></script>
+<main id="main">
+    <div class="Account__title">
+        <h1>Tài Khoản</h1>
+        <div class="Account__title-mini">
+            <i class="fa-solid fa-house"></i> <span>Home / Tài Khoản</span>
+        </div>
+    </div>
+    <div class="Account__body">
+        <!-- đầu  -->
+        <div class="Account__body2" id="infor1">
+            <div class="Account__body2-login">
+                <h2>
+                    <i class="fa-regular fa-user"></i><span>Đăng Kí</span>
+                </h2>
+            </div>
+            <div class="Account__body2-email">
+                <label for="username">Tên người dùng hoặc email <span>*</span></label><br>
+                <input type="email" id="username" name="username"><br>
+            </div>
+            <div class="Account__body2-emailnote">
+                <span>Mật khẩu sẽ được gửi đến địa chỉ email của bạn.</span>
+            </div>
+            <div class="Account__body2-note">
+                <span>
+                    Thông tin cá nhân của bạn sẽ được sử dụng để
+                    tăng trải nghiệm sử dụng website, quản lý truy cập vào tài khoản của bạn,
+                    và cho các mục đích cụ thể khác được mô tả trong <strong>chính sách riêng tư</strong>.
+                </span>
+            </div>
+            <div class="button__login">
+                <button>Đăng kí</button>
+            </div>
+        </div>
+        <!-- hết phần đầu -->
+
+        <div class="Account__body2" style="display: none;" id="infor2">
+            <div class="Account__body2-login">
+                <h2>
+                    <i class="fa-solid fa-right-to-bracket"></i><span>Đăng Nhập</span>
+                </h2>
+            </div>
+            <div class="Account__body2-email">
+                <label for="username">Tên người dùng hoặc email <span>*</span></label><br>
+                <input type="email" id="username" name="username"><br>
+                <label for="username">Mật Khẩu  <span>*</span></label><br>
+                <input type="email" id="username" name="username"><br>
+            </div>
+            <div class="button__login">
+                <button>Đăng nhập</button>
+            </div>
+        </div>
+
+        <!-- phần 2 -->
+        <div class="Account__body3">
+            <div class="Login__title">
+                <h2>Login</h2>
+            </div>
+            <div class="login__description">
+                Đăng ký trang web này cho phép bạn truy cập trạng thái và lịch sử đơn hàng của mình.
+                Chỉ cần điền vào các trường bên dưới và chúng tôi sẽ nhanh chóng thiết lập tài khoản mới cho bạn.
+                Chúng tôi sẽ chỉ hỏi bạn những thông tin cần thiết để giúp quá trình mua hàng nhanh hơn và dễ dàng hơn.
+            </div>
+            <div class="Login__button">
+                <button id="dangnhap" onclick="thaydoidangnhap(2)"> Đăng Nhập </button>
+            </div>
+            <div class="Signup_button">
+                <button onclick="thaydoidangnhap(1)" id="dangki">Đăng Kí  </button>
+            </div>
+        </div>
+    </div>
+</main>

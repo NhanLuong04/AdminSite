@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ConverseShop.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <h2>Danh sách khách hàng</h2>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>
+                    Ngày đặt hàng
+                </th>
+                <th>
+                    SĐT
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @string.Format("{0:dd-MM-yyyy HH:mm:ss}", item.OrderDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressDeliverry)
+                    </td>
+                    <td>
+                        @string.Format("{0:#,0}", item.TotalValue)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) 
+                        @Html.ActionLink("Details", "Details", new { id = item.OrderID }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</div>
+
+
+
